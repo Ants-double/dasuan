@@ -3,6 +3,8 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using dasuan.web;
+using UnitDasuanTest.beans;
+using Newtonsoft.Json;
 
 namespace UnitDasuanTest
 {
@@ -14,7 +16,7 @@ namespace UnitDasuanTest
     {
         public AntsWeb()
         {
-           
+
         }
 
         private TestContext testContextInstance;
@@ -62,7 +64,23 @@ namespace UnitDasuanTest
         {
             string result = AntsWebRequest.getRequest("https://www.baidu.com/");
             Console.WriteLine(result);
-           
+
+        }
+        [TestMethod]
+        public void TestpostRequest()
+        {
+            WindRawLidar wind = new WindRawLidar();
+            wind.beginTime = "2019-01-01 16:20:11";
+            wind.endTime = "2019-01-03 16:20:11";
+            wind.insCode = "instrument";
+            wind.scanType = "B0";
+            wind.siteCode = "cgz";
+            wind.timeInterval = 2;
+            wind.ways = new List<string> { "hSpeed", "vSpeed", "direction" };
+            string  jsonParam = JsonConvert.SerializeObject(wind);
+            string result = AntsWebRequest.postRequest("http://192.168.15.168:8099/product/windlidar/requestExtractionRawWindData", jsonParam, true);
+            Console.WriteLine(result);
+
         }
     }
 }
