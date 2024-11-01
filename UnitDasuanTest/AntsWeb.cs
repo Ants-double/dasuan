@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using dasuan.web;
 using UnitDasuanTest.beans;
 using Newtonsoft.Json;
+using dasuan;
 
 namespace UnitDasuanTest
 {
@@ -63,6 +64,7 @@ namespace UnitDasuanTest
         public void TestAntsWebRequest()
         {
             string result = AntsWebRequest.getRequest("https://www.baidu.com/");
+            LogExten.WriteLog();
             Console.WriteLine(result);
 
         }
