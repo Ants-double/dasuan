@@ -59,6 +59,7 @@
     <Compile Include="utils\FileHelper.cs" />
     <Compile Include="utils\JsonHelper.cs" />
     <Compile Include="utils\ListHelper.cs" />
+    <Compile Include="utils\TxtHelper.cs" />
     <Compile Include="web\AntsWebRequest.cs" />
   </ItemGroup>
   <ItemGroup>
